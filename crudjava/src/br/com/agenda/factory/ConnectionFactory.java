@@ -3,6 +3,7 @@ package br.com.agenda.factory;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
+
 public class ConnectionFactory {
 	
 	private static final String USERNAME = "root";
@@ -32,6 +33,7 @@ public class ConnectionFactory {
 		Connection con = createConnectionToMySQL();
 		
 		//testar se a conexão é nula
+		
 		
 		if(con!=null) {
 			System.out.println("Conexão realizada com sucesso!!");
