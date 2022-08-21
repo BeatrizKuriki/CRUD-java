@@ -16,7 +16,27 @@ public class Main {
 		contato.setNome("Anderson Shigueo Kyoto");
 		contato.setIdade(40);		
 		contato.setProfissao("desenvolvedor");
-		contatoDao.save(contato);
+		//contatoDao.save(contato);
+		
+		//atualizar contato
+		Contato c1 = new Contato();
+		
+		c1.setNome("Anderson Silva");
+		c1.setIdade(41);
+		c1.setProfissao("professor");
+		c1.setId(6);
+		contatoDao.update(c1);
+		
+		
+		
+		
+		//ver os todos registros do banco
+		
+		for(Contato c : contatoDao.getContatos()) {
+			System.out.println("Contato: "+ c.getNome());
+		}
+		
+		
 		
 		
 

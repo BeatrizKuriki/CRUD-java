@@ -59,6 +59,52 @@ public class ContatoDAO {
 		
 		
 	}
+	
+	
+	public void update (Contato contato) { 
+		String sql = "UPDATE contatos SET nome = ?, idade = ?, profissao = ?"+
+	    "WHERE id =?";
+		
+		Connection conn = null;
+		PreparedStatement pstm = null;
+		
+		try {
+			//criar conexão com o banco
+			conn = ConnectionFactory.createConnectionToMySQL();
+			
+			//criar classe para executar a query
+			pstm = (PreparedStatement) conn.prepareStatement(sql);
+			
+			//add as atualizações
+			
+			pstm.setString(1, contato.getNome());
+			pstm.setInt(2, contato.getIdade());
+			pstm.setString(3, contato.getProfissao());
+			
+			pstm.setInt(4, contato.getId());
+			
+			pstm.execute();
+			
+			
+			
+	
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(pstm!=null) {
+					pstm.close();
+				}
+				
+				if(conn!=null) {
+					conn.close();
+				}
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
 
 	//implementando o read- segunda função do crud
 	public List<Contato> getContatos(){
