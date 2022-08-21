@@ -2,6 +2,7 @@ package br.com.agenda.factory;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 
 
 public class ConnectionFactory {
@@ -9,7 +10,7 @@ public class ConnectionFactory {
 	private static final String USERNAME = "root";
 	
 	//senha do bancoDeDados
-	private static final String PASSWORD = "0101";
+	private static final String PASSWORD = "";
 	
 	//caminho do banco de dados, porta, nome do banco
 	
@@ -17,9 +18,14 @@ public class ConnectionFactory {
 	
 	//conexão com o banco de dados
 	
-	public static Connection createConnectionToMySQL() throws Exception{
+	public static Connection createConnectionToMySQL() throws SQLException{
 		//faz com que a classe seja carregada pela jvm
-		Class.forName("com.mysql.jdbc.Driver");
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		//cria a conexão com o banco de dados		
 		Connection connection = DriverManager.getConnection(DATABASE_URL, USERNAME, PASSWORD);
@@ -27,7 +33,7 @@ public class ConnectionFactory {
 		
 	}
 	
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args) throws SQLException{
 		//recuperar uma conexão com o banco de dados 
 		
 		Connection con = createConnectionToMySQL();

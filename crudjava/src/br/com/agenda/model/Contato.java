@@ -7,9 +7,8 @@ public class Contato {
 	private int id;
 	private String nome;
 	private int idade;
-	private Date dataCadastro;
-	
-	
+	private String profissao;
+	//private Date dataCadastro;
 	public int getId() {
 		return id;
 	}
@@ -28,12 +27,14 @@ public class Contato {
 	public void setIdade(int idade) {
 		this.idade = idade;
 	}
-	public Date getDataCadastro() {
-		return dataCadastro;
+	public String getProfissao() {
+		return profissao;
 	}
-	public void setDataCadastro(Date dataCadastro) {
-		this.dataCadastro = dataCadastro;
+	public void setProfissao(String profissao) {
+		this.profissao = profissao;
 	}
+	
+	
 	
 	
 
