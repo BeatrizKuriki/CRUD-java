@@ -2,7 +2,11 @@ package br.com.agenda.dao;
 
 import java.sql.Connection;
 import java.sql.Date;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
+import com.mysql.jdbc.PacketTooBigException;
 import com.mysql.jdbc.PreparedStatement;
 
 import br.com.agenda.factory.ConnectionFactory;
@@ -56,4 +60,80 @@ public class ContatoDAO {
 		
 	}
 
+	//implementando o read- segunda função do crud
+	public List<Contato> getContatos(){
+		String sql = "SELECT * FROM contatos";
+		
+		List<Contato> contatos = new ArrayList<Contato>();
+		
+		Connection conn = null;
+		PreparedStatement pstm = null;
+		
+		//classe que vai recuperar os dados do banco
+		
+		ResultSet rset = null;
+		
+		try {
+			conn = ConnectionFactory.createConnectionToMySQL();
+			
+			pstm = (PreparedStatement) conn.prepareStatement(sql);
+			
+			rset = pstm.executeQuery();
+			
+			while (rset.next()) {
+				Contato contato = new Contato();
+				
+				//ler o id
+				
+				contato.setId(rset.getInt("id"));
+				
+				//ler o nome
+				contato.setNome(rset.getString("nome"));
+				
+				
+				//ler idade
+				contato.setIdade(rset.getInt("idade"));
+				
+				
+				//ler profissao
+				contato.setProfissao(rset.getString("profissao"));		
+				
+				
+				
+				contatos.add(contato);
+				
+			}
+		}catch(Exception e) {
+				e.printStackTrace();
+			}finally {
+				
+			try {
+				
+		
+			
+				if(rset!=null) {
+					rset.close();
+				}
+				
+				if(pstm!=null) {
+					pstm.close();
+				}
+				if(conn!=null) {
+					conn.close();
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+	
+		
+	}
+		return contatos;
+		
+
+ 
+
 }
+}
+
+
+
