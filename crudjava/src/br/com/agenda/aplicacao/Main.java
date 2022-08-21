@@ -13,10 +13,9 @@ public class Main {
 		ContatoDAO contatoDao = new ContatoDAO();
 		
 		Contato contato = new Contato();
-		contato.setNome("Stella Maria Suzuki");
-		contato.setId(55);
-		//contato.setDataCadastro(null);
-		contato.setProfissao(null);
+		contato.setNome("Anderson Shigueo Kyoto");
+		contato.setIdade(40);		
+		contato.setProfissao("desenvolvedor");
 		contatoDao.save(contato);
 		
 		

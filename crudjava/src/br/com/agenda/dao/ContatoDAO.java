@@ -14,7 +14,7 @@ public class ContatoDAO {
 	
 	public void save(Contato contato) {
 		
-		String sql = "INSERT INTO contatos(nome, idade) VALUES(?, ?)";
+		String sql = "INSERT INTO contatos(nome, idade, profissao) VALUES(?, ?,?)";
 		
 	   Connection conn = null;
 	   PreparedStatement pstm = null;
@@ -29,14 +29,14 @@ public class ContatoDAO {
 		   pstm = (PreparedStatement)conn.prepareStatement(sql);
 		   
 		   pstm.setString(1, contato.getNome());
-		   pstm.setInt(2, contato.getIdade());
-		  // pstm.setDate(3, new Date(contato.getDataCadastro().getTime()));
-		   //pstm.setString(3, contato.getProfissao());
+		   pstm.setInt(2, contato.getIdade());		
+		   pstm.setString(3, contato.getProfissao());
 		   
 		   
 		   //executar
 		   
 		   pstm.execute();
+		   System.out.println("Contato salvo com sucesso!!");
 	   }catch(Exception e) {
 		   e.printStackTrace();
 	   }finally {
