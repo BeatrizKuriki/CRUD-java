@@ -13,7 +13,7 @@ public class ConnectionFactory {
 	
 	//caminho do banco de dados, porta, nome do banco
 	
-	private static final String DATABASE_URL = "jdbc:mysql1://localhost:3306/agenda";
+	private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/agenda";
 	
 	//conexão com o banco de dados
 	
