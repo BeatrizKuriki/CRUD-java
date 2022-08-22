@@ -25,7 +25,13 @@ public class Main {
 		c1.setIdade(41);
 		c1.setProfissao("professor");
 		c1.setId(6);
-		contatoDao.update(c1);
+		//contatoDao.update(c1);
+		
+		//deletar contato pelo numero do ID
+		contatoDao.deleteByID(5);
+		
+		
+		
 		
 		
 		
